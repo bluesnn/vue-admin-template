@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ElMessage, ElLoading } from 'element-plus'
 import { globalBaseURL } from '@/utils/globalBaseURL'
-import { getCookie } from '@/utils/storage'
+import { getToken } from '@/utils/storage'
 
 const pendingMap = new Map()
 
