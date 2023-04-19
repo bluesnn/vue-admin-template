@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ElMessage, ElLoading } from 'element-plus'
 import { globalBaseURL } from '@/utils/globalBaseURL'
-import { getToken } from '@/utils/storage'
+// import { getToken } from '@/utils/storage'
 
 const pendingMap = new Map()
 
@@ -55,9 +55,9 @@ export default function request(axiosConfig, customOptions, loadingOptions) {
         }
       }
       // 自动携带token
-      if (custom_options.isToken) {
-        config.headers['Authorization'] = 'Bearer ' + getToken() // 请求携带自定义token 请根据实际情况自行修改
-      }
+      // if (custom_options.isToken) {
+      //   config.headers['Authorization'] = 'Bearer ' + getToken() // 请求携带自定义token 请根据实际情况自行修改
+      // }
 
       return config
     },

@@ -2,7 +2,9 @@
   <div>
     <div
       class="home-root"
-    >{{ appStore.count }}</div>
+    >
+      {{ appStore.count }}
+    </div>
     <el-button
       type="primary"
       @click="appStore.increment()"
@@ -31,9 +33,22 @@
       请求接口错误示例2
     </el-button>
   </div>
+  <Suspense>
+    <template #default>
+      <todo-info ref="getChildList" />
+    </template>
+    <template #fallback>
+      <div>Loading...</div>
+    </template>
+  </Suspense>
+  <button @click="getFunc">
+    click
+  </button>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import TodoInfo from './async.vue'
 import { useToggle } from '@/hooks'
 import { userLogout, userToken } from '@/api'
 import { useAppStore } from '@/store/modules/app'
@@ -74,5 +89,11 @@ const handleToken = () => {
   userToken(params).then(res => {
     console.log(res)
   })
+}
+
+const getChildList = ref(null)
+const getFunc = () => {
+  console.log(getChildList.value)
+  getChildList.value.getTodoInfo()
 }
 </script>
